@@ -13,7 +13,7 @@
 
 #Description
 
-WP Sharrre is a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus and more. More information on [Sharrre](http://sharrre.com/).
+WP Sharrre is a WordPress plugin based on a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus and more. More information on [Sharrre](http://sharrre.com/).
 
 # Features
 
