@@ -38,7 +38,6 @@ jQuery(document).ready(function() {
             pinterest:      { media: 'http://monasheemountainmultimedia.com/img/logo.png', description: 'Hello World', layout: 'horizontal' }
         },
 
-        /*
         hover: function(api, options) {
             jQuery(api.element).find('.buttons').show();
         },
@@ -46,7 +45,7 @@ jQuery(document).ready(function() {
         hide: function(api, options) {
             jQuery(api.element).find('.buttons').hide();
         },
-*/
+
         //enableCounter: false
         enableTracking: true,
         urlCurl: WP_Share.sharrre_php

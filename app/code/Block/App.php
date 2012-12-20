@@ -68,7 +68,8 @@ if ( ! class_exists( 'App' ) ) :
             //add_action( 'widgets_init', function(){ return register_widget( 'rmr_reports\Widget_Ripper_Snow' ); } );
 
             // add scripts
-            add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
+            if( !is_admin() )
+                add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
 
             // add div via filter hook
             add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );

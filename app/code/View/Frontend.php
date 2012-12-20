@@ -63,17 +63,16 @@ if ( ! class_exists( 'Frontend' ) ) :
          */
         private function __construct() {}
 
-        function add_sharrre_the_content() {
+        function add_sharrre_the_content( $content ) {
 
-            $html = '';
-            $html .= '<div class="wp-sharrre-container">';
-            $html .= '<div class="wp-sharrre-inner">';
-            $html .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
-            $html .= ' data-title="share" data-text="Something configurable!!!"></div>';
-            $html .= '</div>';
-            $html .= '</div>';
+            $content .= '<div class="wp-sharrre-container">';
+            $content .= '<div class="wp-sharrre-inner">';
+            $content .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
+            $content .= ' data-title="share" data-text="Something configurable!!!"></div>';
+            $content .= '</div>';
+            $content .= '</div>';
 
-            return $html;
+            return $content;
         }
 
     }
