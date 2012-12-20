@@ -1,0 +1,55 @@
+
+/*
+.wp-sharrre-container { position: absolute; left: 5px; z-index: 9999; }
+*/
+
+.wp-sharrre-container { position: absolute; left: 5px; z-index: 9999; }
+.entry-content iframe { margin-bottom: 0!important; }
+
+.sharrre .box{
+    float:left;
+}
+.sharrre .count {
+    color:#444444;
+    display:block;
+    font-size:17px;
+    line-height:34px;
+    height:34px;
+    padding:4px 0;
+    position:relative;
+    text-align:center;
+    text-decoration:none;
+    width:50px;
+    background-color:#eee;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+.sharrre .share {
+    color:#FFFFFF;
+    display:block;
+    font-size:11px;
+    height:16px;
+    line-height:16px;
+    margin-top:3px;
+    padding:0;
+    text-align:center;
+    text-decoration:none;
+    width:50px;
+    background-color:#9CCE39;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+.sharrre .buttons {
+    /* display:none; */
+    position:absolute;
+    margin-left:50px;
+    z-index:10;
+
+}
+.sharrre .button {
+    float:left;
+    max-width:120px;
+    margin-left:10px;
+}

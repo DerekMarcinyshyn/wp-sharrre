@@ -64,7 +64,16 @@ if ( ! class_exists( 'Frontend' ) ) :
         private function __construct() {}
 
         function add_sharrre_the_content() {
-            return '***** HELLO WORLD ****';
+
+            $html = '';
+            $html .= '<div class="wp-sharrre-container">';
+            $html .= '<div class="wp-sharrre-inner">';
+            $html .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
+            $html .= ' data-title="share" data-text="Something configurable!!!"></div>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            return $html;
         }
 
     }

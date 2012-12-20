@@ -83,19 +83,25 @@ if ( ! class_exists( 'App' ) ) :
          * Add CSS and JS scripts
          */
         function wp_sharrre_scripts() {
-            wp_register_script( 'wp-sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3 ', true );
+            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
+            wp_enqueue_script( 'sharrre-js');
+
+            wp_register_script( 'wp-sharrre-js', WP_SHARRRE_URL . '/assets/js/wp-sharrre.js', array( 'jquery' ), WP_SHARRRE_VERSION, true );
             wp_enqueue_script( 'wp-sharrre-js');
 
-            //wp_register_style( 'rmr-ripper-snow-css', RMR_REPORTS_URL . '/assets/css/rmr-reports.css', true, RMR_REPORTS_VERSION );
-            //wp_enqueue_style( 'rmr-ripper-snow-css' );
+            wp_register_style( 'wp-sharrre-css', WP_SHARRRE_URL . '/assets/css/wp-sharrre.css', true, WP_SHARRRE_VERSION );
+            wp_enqueue_style( 'wp-sharrre-css' );
+
+            // google plus counter script
+            wp_localize_script( 'sharrre-js', 'WP_Share', array( 'sharrre_php' => WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php' ) );
         }
 
         /**
-         * rmr_reports_updater class
+         * wp_sharrre_updater class
          *
          * Check GitHub to see if there is an update available
          */
-        function rmr_reports_updater() {
+        function wp_sharrre_updater() {
             define( 'WP_SHARRRE_FORCE_UPDATE', true );
 
             if ( is_admin() ) {
@@ -113,7 +119,7 @@ if ( ! class_exists( 'App' ) ) :
                     'access_token'          => '',
                 );
 
-                //new \RMR_Reports_Updater( $config );
+                //new \WP_SHARRRE_Updater( $config );
             }
         }
     }
