@@ -54,13 +54,16 @@ define( 'WP_SHARRRE_URL', WP_PLUGIN_URL . '/' . WP_SHARRRE_DIRECTORY );
 
 
 // Require main class
-require_once( WP_SHARRRE_APP_PATH . '/code/Block/App.php' );
+require_once WP_SHARRRE_APP_PATH . '/code/Block/App.php';
+
+// Require settings-api
+require_once WP_SHARRRE_LIB_PATH . '/vendor/settings-api/class.settings-api.php';
 
 // Require admin class
-require_once( WP_SHARRRE_APP_PATH . '/code/Block/Admin.php' );
+require_once WP_SHARRRE_APP_PATH . '/code/Block/Admin.php';
 
 // Require widgets class
-require_once( WP_SHARRRE_APP_PATH . '/code/View/Frontend.php' );
+require_once WP_SHARRRE_APP_PATH . '/code/View/Frontend.php';
 
 // Require updater class
 //include_once( WP_SHARRRE_LIB_PATH . '/vendor/updater/updater.php' );
@@ -71,14 +74,21 @@ require_once( WP_SHARRRE_APP_PATH . '/code/View/Frontend.php' );
 
 global  $wp_sharrre_app,
         $wp_sharrre_frontend,
+        $wp_sharrre_settings_api,
         $wp_sharrre_admin;
 
+// Settings API
+use WP_Sharrre\Settings\Settings_API;
+$wp_sharrre_settings_api = \WP_Sharrre\Settings\Settings_API::getInstance();
+
 // Frontend view
-$wp_sharrre_frontend = \WP_SHARRRE\Frontend::get_instance();
+use WP_Sharrre\View\Frontend;
+$wp_sharrre_frontend = \WP_Sharrre\View\Frontend::get_instance();
 
 // Settings page
-$wp_sharrre_admin = \WP_SHARRRE\Admin::get_instance();
+use WP_Sharrre\Administrator\WP_Sharrre_Admin;
+$wp_sharrre_admin = \WP_Sharrre\Administrator\WP_Sharrre_Admin::get_instance();
 
 // Main class app initialization in App::__construct()
 use WP_Sharrre\App;
-$wp_sharrre_app = \WP_SHARRRE\App::get_instance();
+$wp_sharrre_app = \WP_Sharrre\App::get_instance();

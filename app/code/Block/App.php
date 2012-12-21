@@ -69,15 +69,15 @@ if ( ! class_exists( 'App' ) ) :
             //add_action( 'widgets_init', function(){ return register_widget( 'rmr_reports\Widget_Ripper_Snow' ); } );
 
             // add scripts
-            if( !is_admin() )
+            if ( !is_admin() )
                 add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
 
             // add div via filter hook
             add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
 
             // add settings page
-            if( is_admin() )
-                add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
+            add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
+            add_action( 'admin_init', array( $wp_sharrre_admin, 'wp_sharrre_admin_init' ) );
 
             // check for update
             //add_action( 'admin_init', array( $this, 'rmr_reports_updater' ) );

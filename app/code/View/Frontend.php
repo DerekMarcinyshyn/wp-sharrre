@@ -1,6 +1,6 @@
 <?php
 
-namespace WP_Sharrre;
+namespace WP_Sharrre\View;
 
 /**
  *  Frontend class for WP Sharrre
