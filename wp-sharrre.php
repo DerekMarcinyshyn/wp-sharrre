@@ -56,6 +56,9 @@ define( 'WP_SHARRRE_URL', WP_PLUGIN_URL . '/' . WP_SHARRRE_DIRECTORY );
 // Require main class
 require_once( WP_SHARRRE_APP_PATH . '/code/Block/App.php' );
 
+// Require admin class
+require_once( WP_SHARRRE_APP_PATH . '/code/Block/Admin.php' );
+
 // Require widgets class
 require_once( WP_SHARRRE_APP_PATH . '/code/View/Frontend.php' );
 
@@ -67,10 +70,14 @@ require_once( WP_SHARRRE_APP_PATH . '/code/View/Frontend.php' );
 // ====================================
 
 global  $wp_sharrre_app,
-        $wp_sharrre_frontend;
+        $wp_sharrre_frontend,
+        $wp_sharrre_admin;
 
 // Frontend view
 $wp_sharrre_frontend = \WP_SHARRRE\Frontend::get_instance();
+
+// Settings page
+$wp_sharrre_admin = \WP_SHARRRE\Admin::get_instance();
 
 // Main class app initialization in App::__construct()
 use WP_Sharrre\App;

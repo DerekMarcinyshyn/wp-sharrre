@@ -62,7 +62,8 @@ if ( ! class_exists( 'App' ) ) :
          * Default constructor -- application initialization
          */
         private function __construct() {
-            global $wp_sharrre_frontend;
+            global  $wp_sharrre_frontend,
+                    $wp_sharrre_admin;
 
             // register the ripper snow widget
             //add_action( 'widgets_init', function(){ return register_widget( 'rmr_reports\Widget_Ripper_Snow' ); } );
@@ -73,6 +74,10 @@ if ( ! class_exists( 'App' ) ) :
 
             // add div via filter hook
             add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
+
+            // add settings page
+            if( is_admin() )
+                add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
 
             // check for update
             //add_action( 'admin_init', array( $this, 'rmr_reports_updater' ) );

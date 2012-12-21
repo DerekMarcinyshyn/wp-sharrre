@@ -3,7 +3,7 @@
 namespace WP_Sharrre;
 
 /**
- *  Frontend class for WP Sharrre
+ *  Admin class for WP Sharrre
  *
  * PHP version 5.3.x +
  *
@@ -35,9 +35,9 @@ namespace WP_Sharrre;
  * @link       https://derekmarcinyshyn.github.com/wp-sharrre
  */
 
-if ( ! class_exists( 'Frontend' ) ) :
+if ( ! class_exists( 'Admin' ) ) :
 
-    class Frontend {
+    class Admin {
 
         /**
          * _instance class variable
@@ -63,18 +63,15 @@ if ( ! class_exists( 'Frontend' ) ) :
          */
         private function __construct() {}
 
-        function add_sharrre_the_content( $content ) {
+        function add_settings_page() {
+            add_submenu_page( 'options-general.php', 'WP Sharrre Settings', 'WP Sharrre', 'activate_plugins', 'wp-sharrre', array( $this, 'wp_sharrre_settings' ) );
+        }
 
-            $sharrre = '';
-            $sharrre .= '<div class="wp-sharrre-container">';
-            $sharrre .= '<div class="wp-sharrre-inner">';
-            $sharrre .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
-            $sharrre .= ' data-title="share" data-text="Something configurable!!!"></div>';
-            $sharrre .= '</div>';
-            $sharrre .= '</div>';
+        function wp_sharrre_settings() {
 
-            return $sharrre . $content;
+            echo 'HELLO WORLD';
         }
 
     }
-endif; // if class_exists
+
+endif; // end if class_exists
