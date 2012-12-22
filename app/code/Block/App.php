@@ -95,8 +95,75 @@ if ( ! class_exists( 'App' ) ) :
             wp_register_style( 'wp-sharrre-css', WP_SHARRRE_URL . '/assets/css/wp-sharrre.css', true, WP_SHARRRE_VERSION );
             wp_enqueue_style( 'wp-sharrre-css' );
 
+            $show_buttons = get_option( 'wp_sharrre_show_buttons' );
+
+            $gp = false;
+            $fb = false;
+            $tw = false;
+            $de = false;
+            $st = false;
+            $li = false;
+            $pi = false;
+            $tracking = false;
+
+            if ( isset( $show_buttons['google_plus'] ) )
+                $gp = true;
+
+            if ( isset( $show_buttons['facebook'] ) )
+                $fb = true;
+
+            if ( isset( $show_buttons['twitter'] ) )
+                $tw = true;
+
+            if ( isset( $show_buttons['delicious'] ) )
+                $de = true;
+
+            if ( isset( $show_buttons['stumbleupon'] ) )
+                $st = true;
+
+            if ( isset( $show_buttons['linkedin'] ) )
+                $li = true;
+
+            if ( isset( $show_buttons['pinterest'] ) )
+                $pi = true;
+
+            if ( isset( $show_buttons['tracking'] ) )
+                $tracking = true;
+
             // sharrre php script location
-            wp_localize_script( 'sharrre-js', 'WP_Share', array( 'sharrre_php' => WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php' ) );
+            wp_localize_script(
+                'sharrre-js',
+                'WP_Sharrre',
+                array(
+                    'sharrre_php'       => WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php',
+                    'google_plus'       => $gp,
+                    'facebook'          => $fb,
+                    'twitter'           => $tw,
+                    'delicious'         => $de,
+                    'stumbleupon'       => $st,
+                    'linkedin'          => $li,
+                    'pinterest'         => $pi,
+                    'tracking'          => $tracking
+                ) );
+        }
+
+        /**
+         * get the WP Sharrre Options
+         *
+         * @param $option
+         * @param $section
+         * @param string $default
+         * @return string
+         */
+        function wp_sharrre_get_option( $option, $section, $default = '' ) {
+
+            $options = get_option( $section );
+
+            if ( isset( $options[$option] ) ) {
+                return $options[$option];
+            }
+
+            return $default;
         }
 
         /**

@@ -36,7 +36,6 @@
     padding:0;
     text-align:center;
     text-decoration:none;
-    width:50px;
     background-color: #417dce;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
@@ -51,6 +50,7 @@
 }
 .sharrre .button {
     float:left;
-    max-width:120px;
+    max-width:450px;
     margin-left:10px;
+    z-index: 9999;
 }

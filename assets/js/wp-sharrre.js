@@ -19,13 +19,13 @@ jQuery(document).ready(function() {
     // add the buttons to the container
     jQuery('#wp-sharrre').sharrre({
         share: {
-            googlePlus:     true,
-            facebook:       true,
-            twitter:        true,
-            delicious:      true,
-            stumbleupon:    true,
-            linkedin:       true,
-            pinterest:      true
+            googlePlus:     Boolean(WP_Sharrre.google_plus),
+            facebook:       Boolean(WP_Sharrre.facebook),
+            twitter:        Boolean(WP_Sharrre.twitter),
+            delicious:      Boolean(WP_Sharrre.delicious),
+            stumbleupon:    Boolean(WP_Sharrre.stumbleupon),
+            linkedin:       Boolean(WP_Sharrre.linkedin),
+            pinterest:      Boolean(WP_Sharrre.pinterest)
         },
 
         buttons: {
@@ -46,9 +46,8 @@ jQuery(document).ready(function() {
             jQuery(api.element).find('.buttons').hide();
         },
 
-        //enableCounter: false
-        enableTracking: true,
-        urlCurl: WP_Share.sharrre_php
+        enableTracking: Boolean(WP_Sharrre.tracking),
+        urlCurl: WP_Sharrre.sharrre_php
     });
 
 });
