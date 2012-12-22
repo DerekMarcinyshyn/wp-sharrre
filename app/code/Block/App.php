@@ -65,9 +65,6 @@ if ( ! class_exists( 'App' ) ) :
             global  $wp_sharrre_frontend,
                     $wp_sharrre_admin;
 
-            // register the ripper snow widget
-            //add_action( 'widgets_init', function(){ return register_widget( 'rmr_reports\Widget_Ripper_Snow' ); } );
-
             // add scripts
             if ( !is_admin() )
                 add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
@@ -80,7 +77,7 @@ if ( ! class_exists( 'App' ) ) :
             add_action( 'admin_init', array( $wp_sharrre_admin, 'wp_sharrre_admin_init' ) );
 
             // check for update
-            //add_action( 'admin_init', array( $this, 'rmr_reports_updater' ) );
+            //add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
         }
 
         /**
@@ -98,7 +95,7 @@ if ( ! class_exists( 'App' ) ) :
             wp_register_style( 'wp-sharrre-css', WP_SHARRRE_URL . '/assets/css/wp-sharrre.css', true, WP_SHARRRE_VERSION );
             wp_enqueue_style( 'wp-sharrre-css' );
 
-            // google plus counter script
+            // sharrre php script location
             wp_localize_script( 'sharrre-js', 'WP_Share', array( 'sharrre_php' => WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php' ) );
         }
 
