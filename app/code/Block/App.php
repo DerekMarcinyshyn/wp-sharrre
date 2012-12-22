@@ -95,6 +95,7 @@ if ( ! class_exists( 'App' ) ) :
             wp_register_style( 'wp-sharrre-css', WP_SHARRRE_URL . '/assets/css/wp-sharrre.css', true, WP_SHARRRE_VERSION );
             wp_enqueue_style( 'wp-sharrre-css' );
 
+            // get the settings options
             $show_buttons = get_option( 'wp_sharrre_show_buttons' );
 
             $gp = false;
@@ -130,7 +131,7 @@ if ( ! class_exists( 'App' ) ) :
             if ( isset( $show_buttons['tracking'] ) )
                 $tracking = true;
 
-            // sharrre php script location
+            // push the settings to frontend in footer
             wp_localize_script(
                 'sharrre-js',
                 'WP_Sharrre',
@@ -172,6 +173,7 @@ if ( ! class_exists( 'App' ) ) :
          * Check GitHub to see if there is an update available
          */
         function wp_sharrre_updater() {
+
             define( 'WP_SHARRRE_FORCE_UPDATE', true );
 
             if ( is_admin() ) {
@@ -189,7 +191,7 @@ if ( ! class_exists( 'App' ) ) :
                     'access_token'          => '',
                 );
 
-                //new \WP_SHARRRE_Updater( $config );
+                new \WP_SHARRRE_Updater( $config );
             }
         }
     }
