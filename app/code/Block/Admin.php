@@ -161,6 +161,7 @@ _gaq.push(['_trackPageview']);
             <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track2.png\" /></p>
             <p>Your results, if your tracking is properly set up, will look similar to this:</p>
             <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track3.png\" /></p>
+            <p>Further reading: <a href=\"https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial\" target=\"_blank\">Social Interaction Analytics</a>
             ";
 
             $settings_fields = array (
