@@ -139,13 +139,27 @@ if ( ! class_exists( 'Settings_API' ) ):
 
     }
 
+    function callback_about( $args ) {
+
+        $html = '';
+        $html .= $args['desc'];
+
+        echo $html;
+    }
+
+    /**
+     * Displays the builtin Farbastic colorpicker
+     *
+     * @param array     $args settings field args
+     */
     function callback_colorpicker( $args ) {
+
         $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
         $size = 70;
 
         $html = '<div class="color-picker" style="position: relative;">';
         $html .= sprintf( '<input type="text" class="%1$s-text popup-colorpicker" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
-        $html .= '<div id="' . $args['id'] . 'picker" style="position: absolute"></div>';
+        //$html .= '<div id="' . $args['id'] . 'picker" style="position: absolute"></div>';
         $html .= sprintf( '<span class="description"> %s</span>', $args['desc'] );
         $html .= '</div>';
 

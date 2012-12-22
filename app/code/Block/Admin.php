@@ -88,7 +88,7 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
             <div id="icon-options-general" class="icon32"></div>
             <h2>WP Sharrre Settings</h2>
             <?php
-            settings_errors();
+            settings_errors( '', false, true );
 
             // Output settings form
             $wp_sharrre_settings_api->show_navigation();
@@ -105,14 +105,20 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
          */
         function get_settings_sections() {
             $sections = array(
+
                 array(
-                    'id'        => 'wp_sharrre_general',
-                    'title'     =>  'General Settings'
+                    'id'        => 'wp_sharrre_setup',
+                    'title'     => 'Setup'
                 ),
 
                 array(
-                    'id'        => 'wp_sharrre_colors',
-                    'title'     => 'Colors'
+                    'id'        => 'wp_sharrre_show_buttons',
+                    'title'     =>  'Show Buttons'
+                ),
+
+                array(
+                    'id'        => 'wp_sharrre_button',
+                    'title'     => 'Share Button'
                 )
             );
 
@@ -125,23 +131,131 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
          * @return array
          */
         function get_settings_fields() {
+
+            $setup_google_analytics = "
+            <h2>Track Tweets, Facebook Likes, Google Plus, etc</h2>
+            <strong>Installation</strong>
+            <p>If not already the case, you need to update you Google Analytics code. It should look like this:</p>
+            <div style=\"padding:0 15px; background: #fefbf3; border:1px solid #ccc; margin-bottom:20px; \">
+            <pre>&lt;script type=\"text/javascript\"&gt;
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-xxxxxx-x']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+}) ();
+&lt;script&gt;</pre>
+            </div>
+
+            <p><strong>Enable tracking in Show Buttons tab</strong></p>
+
+            <h2>Viewing your Google Analytics social tracking reports</h2>
+            <p>Go in the Google Analytics Interface</p>
+            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track1.png\" /></p>
+            <p>Then in the left menu go to <strong>Vistors > Social > Engagement</strong> (or Pages or Actions).</p>
+            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track2.png\" /></p>
+            <p>Your results, if your tracking is properly set up, will look similar to this:</p>
+            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track3.png\" /></p>
+            ";
+
             $settings_fields = array (
 
-                'wp_sharrre_general'  => array(
+                'wp_sharrre_setup'      => array(
                     array(
-                      'name'        => 'google_plus',
-                      'label'       => 'Show Google Plus',
-                      'desc'        => '',
-                      'type'        => 'checkbox'
+                        'name'          => 'setup',
+                        'label'         => 'Setup Google Analytics',
+                        'desc'          => $setup_google_analytics,
+                        'type'          => 'about'
                     )
                 ),
 
-                'wp_sharrre_colors' => array(
+                'wp_sharrre_show_buttons'  => array(
                     array(
-                        'name'      => 'share_button_bg_color',
-                        'label'     => 'Share Button Bg Color',
-                        'desc'      => '',
-                        'type'      => 'colorpicker'
+                      'name'            => 'google_plus',
+                      'label'           => 'Show Google Plus',
+                      'desc'            => '',
+                      'type'            => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'facebook',
+                        'label'         => 'Show Facebook',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'twitter',
+                        'label'         => 'Show Twitter',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'delicious',
+                        'label'         => 'Show Delicious',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'stumbleupon',
+                        'label'         => 'Show StumbleUpon',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'linkedin',
+                        'label'         => 'Show LinkedIn',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'pinterest',
+                        'label'         => 'Show Pinterest',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    ),
+
+                    array(
+                        'name'          => 'tracking',
+                        'label'         => 'Enable Google Analytics tracking',
+                        'desc'          => '',
+                        'type'          => 'checkbox'
+                    )
+                ),
+
+                'wp_sharrre_button'     => array(
+                    array(
+                        'name'          => 'share_button_text',
+                        'label'         => 'Share Button Text',
+                        'desc'          => '',
+                        'default'       => 'share',
+                        'type'          => 'text',
+                        'size'          => '70'
+                    ),
+
+                    array(
+                        'name'          => 'share_button_bg_color',
+                        'label'         => 'Share Button Bg Color',
+                        'desc'          => '',
+                        'default'       => '#417dce',
+                        'type'          => 'colorpicker'
+                    ),
+
+                    array(
+                        'name'          => 'count_bg_color',
+                        'label'         => 'Count Bg Color',
+                        'desc'          => '',
+                        'default'       => '#eeeeee',
+                        'type'          => 'colorpicker'
                     )
                 )
 
