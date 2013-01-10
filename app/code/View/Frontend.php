@@ -83,14 +83,14 @@ if ( ! class_exists( 'Frontend' ) ) :
             $wp_sharrre_button_options = get_option( 'wp_sharrre_button' );
             $wp_sharrre_show_button = get_option( 'wp_sharrre_show_buttons' );
 
-            $gp = false;
-            $fb = false;
-            $tw = false;
-            $de = false;
-            $st = false;
-            $li = false;
-            $pi = false;
-            $tracking = false;
+            $gp = 0;
+            $fb = 0;
+            $tw = 0;
+            $de = 0;
+            $st = 0;
+            $li = 0;
+            $pi = 0;
+            $tracking = 0;
 
             if ( isset( $wp_sharrre_show_button['google_plus'] ) ) $gp = true;
             if ( isset( $wp_sharrre_show_button['facebook'] ) ) $fb = true;
@@ -163,16 +163,14 @@ if ( ! class_exists( 'Frontend' ) ) :
                 <style>
                     #wp-sharrre { float:left; }
                     .sharrre .button { float:left; width: 80px; }
+                    .sharrre .googleplus { width: 70px!important; }
                     .sharrre .delicious { width: 100px!important; }
+                    .sharrre .twitter { width: 85px!important; }
                     .fb-like span { width: 450px!important; overflow:visible!important; }
                 </style>
             ';
 
             return $html;
-        }
-
-        private function add_wp_sharrre_js() {
-
         }
 
     }
