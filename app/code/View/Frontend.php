@@ -76,5 +76,104 @@ if ( ! class_exists( 'Frontend' ) ) :
             return $sharrre . $content;
         }
 
+        public static function display_wp_sharrre() {
+            global $post;
+
+            // initialize variables
+            $wp_sharrre_button_options = get_option( 'wp_sharrre_button' );
+            $wp_sharrre_show_button = get_option( 'wp_sharrre_show_buttons' );
+
+            $gp = false;
+            $fb = false;
+            $tw = false;
+            $de = false;
+            $st = false;
+            $li = false;
+            $pi = false;
+            $tracking = false;
+
+            if ( isset( $wp_sharrre_show_button['google_plus'] ) ) $gp = true;
+            if ( isset( $wp_sharrre_show_button['facebook'] ) ) $fb = true;
+            if ( isset( $wp_sharrre_show_button['twitter'] ) ) $tw = true;
+            if ( isset( $wp_sharrre_show_button['delicious'] ) ) $de = true;
+            if ( isset( $wp_sharrre_show_button['stumbleupon'] ) ) $st = true;
+            if ( isset( $wp_sharrre_show_button['linkedin'] ) ) $li = true;
+            if ( isset( $wp_sharrre_show_button['pinterest'] ) ) $pi = true;
+            if ( isset( $wp_sharrre_show_button['tracking'] ) ) $tracking = true;
+
+            // find the first image associated with the post
+            $args = array(
+                'numberposts'       => 1,
+                'order'             => 'ASC',
+                'post_mime_type'    => 'image',
+                'post_parent'       => $post->ID,
+                'post_status'       => null,
+                'post_type'         => 'attachment'
+            );
+
+            $post_images_data = get_children( $args );
+
+            // setting for default image?
+            $post_image_src[0] = '';
+
+            if ( $post_images_data ) {
+                foreach ( $post_images_data as $post_image_data) {
+                    $post_image_src = wp_get_attachment_image_src( $post_image_data->ID, 'full' );
+                }
+            }
+
+            // the html div holder
+            $html = '';
+            $html .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
+            $html .= ' data-text="' . $post->post_title . '"';
+            $html .= ' data-title="' . $wp_sharrre_button_options['share_button_text']  . '"></div>';
+
+            // sharrre javascript
+            $html .= '
+                <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery("#wp-sharrre").sharrre({
+                        share: {
+                            googlePlus:     ' . $gp . ',
+                            facebook:       ' . $fb . ',
+                            twitter:        ' . $tw . ',
+                            delicious:      ' . $de . ',
+                            stumbleupon:    ' . $st . ',
+                            linkedin:       ' . $li . ',
+                            pinterest:      ' . $pi . '
+                        },
+
+                        buttons: {
+                                googlePlus:     { size:     "medium" },
+                                facebook:       { layout:   "button_count" },
+                                twitter:        { count:    "horizontal" },
+                                delicious:      { size:     "medium" },
+                                stumbleupon:    { layout:   "1" },
+                                linkedin:       { counter:  "right" },
+                                pinterest:      { media: "' . $post_image_src[0] . '", description: "' . $post->post_title . '", layout: "horizontal" }
+                            },
+
+                        enableCounter:      false,
+                        enableHover:        false,
+                        enableTracking:     ' . $tracking . ',
+                        urlCurl:            "' . WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php"
+                    });
+                });
+                </script>
+                <style>
+                    #wp-sharrre { float:left; }
+                    .sharrre .button { float:left; width: 80px; }
+                    .sharrre .delicious { width: 100px!important; }
+                    .fb-like span { width: 450px!important; overflow:visible!important; }
+                </style>
+            ';
+
+            return $html;
+        }
+
+        private function add_wp_sharrre_js() {
+
+        }
+
     }
 endif; // if class_exists

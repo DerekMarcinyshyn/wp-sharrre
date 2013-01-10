@@ -59,14 +59,17 @@ require_once WP_SHARRRE_APP_PATH . '/code/Block/App.php';
 // Require settings-api
 require_once WP_SHARRRE_LIB_PATH . '/vendor/settings-api/class.settings-api.php';
 
+// Require get-the-image
+require_once WP_SHARRRE_LIB_PATH . '/vendor/get-the-image/get-the-image.php';
+
 // Require admin class
 require_once WP_SHARRRE_APP_PATH . '/code/Block/Admin.php';
 
-// Require widgets class
+// Require frontend class
 require_once WP_SHARRRE_APP_PATH . '/code/View/Frontend.php';
 
 // Require updater class
-//include_once( WP_SHARRRE_LIB_PATH . '/vendor/updater/updater.php' );
+include_once( WP_SHARRRE_LIB_PATH . '/vendor/updater/updater.php' );
 
 // ====================================
 // = Initialize and setup application =

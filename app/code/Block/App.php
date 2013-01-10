@@ -65,27 +65,42 @@ if ( ! class_exists( 'App' ) ) :
             global  $wp_sharrre_frontend,
                     $wp_sharrre_admin;
 
-            // add scripts
-            if ( !is_admin() )
-                add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
+            // add scripts only on frontend
+            if ( !is_admin() ) {
 
+                // TODO: only if want to display vertical
+                //add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
+
+                add_action( 'init', array( $this, 'wp_sharrre_scripts_horizontal' ) );
+            }
+
+            // TODO: if display vertical use this
             // add div via filter hook
-            add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
+            //add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
+
 
             // add settings page
             add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
             add_action( 'admin_init', array( $wp_sharrre_admin, 'wp_sharrre_admin_init' ) );
 
             // check for update
-            //add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
+            add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
+        }
+
+        function wp_sharrre_scripts_horizontal() {
+            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
+            wp_enqueue_script( 'sharrre-js');
         }
 
         /**
          * wp_sharrre_scripts function
+         * for displaying in a vertical format
          *
          * Add CSS and JS scripts
          */
         function wp_sharrre_scripts() {
+            global $first_img;
+
             wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
             wp_enqueue_script( 'sharrre-js');
 
@@ -98,6 +113,7 @@ if ( ! class_exists( 'App' ) ) :
             // get the settings options
             $show_buttons = get_option( 'wp_sharrre_show_buttons' );
 
+            // set the variables -- if unchecked they will not appear in the array
             $gp = false;
             $fb = false;
             $tw = false;
@@ -107,29 +123,14 @@ if ( ! class_exists( 'App' ) ) :
             $pi = false;
             $tracking = false;
 
-            if ( isset( $show_buttons['google_plus'] ) )
-                $gp = true;
-
-            if ( isset( $show_buttons['facebook'] ) )
-                $fb = true;
-
-            if ( isset( $show_buttons['twitter'] ) )
-                $tw = true;
-
-            if ( isset( $show_buttons['delicious'] ) )
-                $de = true;
-
-            if ( isset( $show_buttons['stumbleupon'] ) )
-                $st = true;
-
-            if ( isset( $show_buttons['linkedin'] ) )
-                $li = true;
-
-            if ( isset( $show_buttons['pinterest'] ) )
-                $pi = true;
-
-            if ( isset( $show_buttons['tracking'] ) )
-                $tracking = true;
+            if ( isset( $show_buttons['google_plus'] ) ) $gp = true;
+            if ( isset( $show_buttons['facebook'] ) ) $fb = true;
+            if ( isset( $show_buttons['twitter'] ) ) $tw = true;
+            if ( isset( $show_buttons['delicious'] ) ) $de = true;
+            if ( isset( $show_buttons['stumbleupon'] ) ) $st = true;
+            if ( isset( $show_buttons['linkedin'] ) ) $li = true;
+            if ( isset( $show_buttons['pinterest'] ) ) $pi = true;
+            if ( isset( $show_buttons['tracking'] ) ) $tracking = true;
 
             // push the settings to frontend in footer
             wp_localize_script(
@@ -144,6 +145,7 @@ if ( ! class_exists( 'App' ) ) :
                     'stumbleupon'       => $st,
                     'linkedin'          => $li,
                     'pinterest'         => $pi,
+                    'pinimage'          => $first_img,
                     'tracking'          => $tracking
                 ) );
         }
