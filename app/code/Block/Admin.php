@@ -273,6 +273,14 @@ _gaq.push(['_trackPageview']);
                         'default'       => 'http://monasheemountainmultimedia.com',
                         'type'          => 'text',
                         'size'          => 'regular'
+                    ),
+
+                    array(
+                        'name'          => 'pinterest_default_logo',
+                        'label'         => 'Pinterest Default Logo',
+                        'desc'          => '',
+                        'default'       => 'http://mylogo.com',
+                        'type'          => 'media'
                     )
                 )
 

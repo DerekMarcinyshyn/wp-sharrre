@@ -2,11 +2,13 @@
 namespace WP_Sharrre\Settings;
 
 /**
- * weDevs Settings API wrapper class
+ * Settings API wrapper class
  *
  * @author Tareq Hasan <tareq@weDevs.com>
+ * @author Derek Marcinyshyn <derek@marcinyshyn.com>
  * @link http://tareq.weDevs.com Tareq's Planet
  * @example settings-api.php How to use the class
+ * @since Jan 10, 2013 added colorpick and media uploader 3.5
  */
 if ( ! class_exists( 'Settings_API' ) ):
     class Settings_API {
@@ -130,19 +132,41 @@ if ( ! class_exists( 'Settings_API' ) ):
             // enqueue color picker js and css
             wp_enqueue_script(
                 'artus-field-color-js',
-                WP_PLUGIN_URL . '/' . dirname( plugin_basename(__FILE__) ) . '/lib/vendor/settings-api/colorpicker.js',
+                WP_PLUGIN_URL . '/' . dirname( plugin_basename(__FILE__) ) . '/colorpicker.js',
                 array('jquery', 'farbtastic'),
                 time(),
                 true
             );
             wp_enqueue_style( 'farbtastic' );
 
+            // import media uploader javascript
+            wp_register_script(
+                'settings-api-upload',
+                WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/settings-api-upload.js',
+                array( 'jquery', 'media-upload', 'thickbox' ),
+                time(),
+                true
+            );
+
+            wp_enqueue_script( 'thickbox' );
+            wp_enqueue_style( 'thickbox' );
+            wp_enqueue_script( 'media-upload' );
+            wp_enqueue_script( 'settings-api-upload' );
         }
 
+        /**
+         * Displays the WordPress 3.5 Media Manager
+         *
+         * @param $args
+         */
         function callback_media( $args ) {
 
+            $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+
             $html = '';
-            $html .= 'This is media';
+            $html .= sprintf( '<input type="text" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', 'regular', $args['section'], $args['id'], $value );
+            $html .= '<input type="button" class="button" id="upload_logo_button" value="Upload Logo"/>';
+
 
             echo $html;
         }
