@@ -170,6 +170,7 @@ if ( ! class_exists( 'Frontend' ) ) :
                     .sharrre .twitter { width: 85px!important; }
                     .fb-like span { width: 450px!important; overflow:visible!important; }
                 </style>
+                <div style="clear:both"></div>
             ';
 
             return $html;
