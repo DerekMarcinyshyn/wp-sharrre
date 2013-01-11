@@ -115,6 +115,7 @@ if ( ! class_exists( 'Frontend' ) ) :
             $post_images_data = get_children( $args );
 
             // setting for default image?
+            $post_image_src[0] = '';
             $post_image_src[0] = $wp_sharrre_pinterest['pinterest_default_image'];
 
             if ( $post_images_data ) {

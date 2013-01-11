@@ -62,8 +62,7 @@ if ( ! class_exists( 'App' ) ) :
          * Default constructor -- application initialization
          */
         private function __construct() {
-            global  $wp_sharrre_frontend,
-                    $wp_sharrre_admin;
+            global $wp_sharrre_admin;
 
             // add scripts only on frontend
             if ( !is_admin() ) {
@@ -77,7 +76,6 @@ if ( ! class_exists( 'App' ) ) :
             // TODO: if display vertical use this
             // add div via filter hook
             //add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
-
 
             // add settings page
             add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );

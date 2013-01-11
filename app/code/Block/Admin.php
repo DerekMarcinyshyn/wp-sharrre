@@ -172,7 +172,7 @@ _gaq.push(['_trackPageview']);
             ";
 
             $usage = '<div style="padding:0 15px; background: #fefbf3; border:1px solid #ccc; margin-bottom:20px;">
-            <pre>&lt;?php echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); ?&gt;</pre>
+            <pre>&lt;php if ( is_callable( \'\WP_Sharrre\View\Frontend::display_wp_sharrre\' ) ) { echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); } ?&gt;</pre>
             </div>
             ';
 
