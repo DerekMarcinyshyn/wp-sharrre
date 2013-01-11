@@ -137,12 +137,12 @@ if ( ! class_exists( 'Frontend' ) ) :
                     jQuery("#wp-sharrre").sharrre({
                         share: {
                             googlePlus:     ' . $gp . ',
-                            facebook:       ' . $fb . ',
                             twitter:        ' . $tw . ',
                             delicious:      ' . $de . ',
                             stumbleupon:    ' . $st . ',
                             linkedin:       ' . $li . ',
-                            pinterest:      ' . $pi . '
+                            pinterest:      ' . $pi . ',
+                            facebook:       ' . $fb . ',
                         },
 
                         buttons: {
@@ -163,12 +163,14 @@ if ( ! class_exists( 'Frontend' ) ) :
                 });
                 </script>
                 <style>
-                    #wp-sharrre { float:left; }
+                    #wp-sharrre { float:left; z-index: 999; }
                     .sharrre .button { float:left; width: 80px; }
                     .sharrre .googleplus { width: 70px!important; }
                     .sharrre .delicious { width: 100px!important; }
                     .sharrre .twitter { width: 85px!important; }
-                    .fb-like span { width: 450px!important; overflow:visible!important; }
+                    .sharrre .linkedin { width: 70px!important; }
+                    .sharrre .pinterest { width: 50px!important; }
+                    .fb-like span { width: 450px!important; overflow:visible!important; z-index: 999; }
                 </style>
                 <div style="clear:both"></div>
             ';
