@@ -1,5 +1,9 @@
 # Settings API
 
+## Description
+
+A WordPress Settings API to help the plugin or theme developer create admin pages with options for the user.
+
 Setup
 -----
 
