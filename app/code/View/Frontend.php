@@ -82,6 +82,7 @@ if ( ! class_exists( 'Frontend' ) ) :
             // initialize variables
             $wp_sharrre_button_options = get_option( 'wp_sharrre_button' );
             $wp_sharrre_show_button = get_option( 'wp_sharrre_show_buttons' );
+            $wp_sharrre_pinterest = get_option( 'wp_sharrre_pinterest' );
 
             $gp = 0;
             $fb = 0;
@@ -114,7 +115,7 @@ if ( ! class_exists( 'Frontend' ) ) :
             $post_images_data = get_children( $args );
 
             // setting for default image?
-            $post_image_src[0] = '';
+            $post_image_src[0] = $wp_sharrre_pinterest['pinterest_default_image'];
 
             if ( $post_images_data ) {
                 foreach ( $post_images_data as $post_image_data) {

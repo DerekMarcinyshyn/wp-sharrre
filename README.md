@@ -11,9 +11,11 @@
 * **Tested up to**: 3.5
 * **License**: GPLv2
 
-#Description
+# Description
 
 WP Sharrre is a WordPress plugin based on a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus and more. More information on [Sharrre](http://sharrre.com/).
+
+Must be using PHP 5.3.x +
 
 # Features
 
@@ -25,10 +27,13 @@ WP Sharrre is a WordPress plugin based on a jQuery plugin that allows you to cre
 * StumbleUpon
 * Linkedin
 * Pinterest
+* Pinterest default image and url
 * Google Analytics tracking
 * Improve loading page
 * Highly configurable
 * Highly personalizable
 * Super lightweight
 
+# Usage
 
+In your theme use ```<?php echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); ?>``` to display the Share buttons.
