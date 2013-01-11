@@ -2,15 +2,13 @@
 
 ## Description
 
-A WordPress Settings API to help the plugin or theme developer create admin pages with options for the user.
+A WordPress Settings API helper class for a plugin or theme developer aiding in creating admin pages with options for the user.
 
-Setup
------
+## Setup
 
 Edit settings-api-upload.js file ```referrer=``` to reflect the page and title of your plugin/theme. Also edit line 18 to reflect the input id of the image.
 
-Note
-----
+## Note
 
 Make sure to escape ```[value]``` in jQuery selector call.
 
