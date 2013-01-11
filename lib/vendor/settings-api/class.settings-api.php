@@ -130,7 +130,7 @@ if ( ! class_exists( 'Settings_API' ) ):
         // enqueue color picker js and css
         wp_enqueue_script(
             'artus-field-color-js',
-            WP_SHARRRE_URL . '/lib/vendor/settings-api/colorpicker.js',
+            WP_PLUGIN_URL . '/' . dirname( plugin_basename(__FILE__) ) . '/lib/vendor/settings-api/colorpicker.js',
             array('jquery', 'farbtastic'),
             time(),
             true
@@ -139,6 +139,11 @@ if ( ! class_exists( 'Settings_API' ) ):
 
     }
 
+    /**
+     * Display plain ol' html
+     *
+     * @param $args
+     */
     function callback_about( $args ) {
 
         $html = '';
