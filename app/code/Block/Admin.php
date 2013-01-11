@@ -116,10 +116,12 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
                     'title'     =>  'Show Buttons'
                 ),
 
+                /** not using yet
                 array(
                     'id'        => 'wp_sharrre_button',
                     'title'     => 'Share Button'
                 ),
+                */
 
                 array(
                     'id'        => 'wp_sharrre_pinterest',
