@@ -119,6 +119,11 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
                 array(
                     'id'        => 'wp_sharrre_button',
                     'title'     => 'Share Button'
+                ),
+
+                array(
+                    'id'        => 'wp_sharrre_pinterest',
+                    'title'     => 'Pinterest Logo'
                 )
             );
 
@@ -257,6 +262,17 @@ _gaq.push(['_trackPageview']);
                         'desc'          => '',
                         'default'       => '#eeeeee',
                         'type'          => 'colorpicker'
+                    )
+                ),
+
+                'wp_sharrre_pinterest'  => array(
+                    array(
+                        'name'          => 'pinterest_default_url',
+                        'label'         => 'Pinterest Default URL',
+                        'desc'          => '',
+                        'default'       => 'http://monasheemountainmultimedia.com',
+                        'type'          => 'text',
+                        'size'          => 'regular'
                     )
                 )
 
