@@ -171,9 +171,22 @@ _gaq.push(['_trackPageview']);
             <p>Further reading: <a href=\"https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial\" target=\"_blank\">Social Interaction Analytics</a>
             ";
 
+            $usage = '<div style="padding:0 15px; background: #fefbf3; border:1px solid #ccc; margin-bottom:20px;">
+            <pre>&lt;?php echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); ?&gt;</pre>
+            </div>
+            ';
+
             $settings_fields = array (
 
                 'wp_sharrre_setup'      => array(
+
+                    array(
+                        'name'          => 'usage',
+                        'label'         => 'Usage in your theme',
+                        'desc'          => $usage,
+                        'type'          => 'about'
+                    ),
+
                     array(
                         'name'          => 'setup',
                         'label'         => 'Setup Google Analytics',
