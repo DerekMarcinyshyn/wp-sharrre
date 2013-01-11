@@ -165,8 +165,11 @@ if ( ! class_exists( 'Settings_API' ) ):
 
             $html = '';
             $html .= sprintf( '<input type="text" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', 'regular', $args['section'], $args['id'], $value );
-            $html .= '<input type="button" class="button" id="upload_logo_button" value="Upload Logo"/>';
-
+            $html .= '<input type="button" class="button" id="upload_logo_button" value="Upload Default Image"/>';
+            $html .= '<br /><br />';
+            $html .= '<div id="upload_image_preview" style="min-height: 100px">';
+            $html .= '<img style="max-width:100%;" src="' . $value . '" />';
+            $html .= '</div>';
 
             echo $html;
         }

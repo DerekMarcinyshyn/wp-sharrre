@@ -266,20 +266,19 @@ _gaq.push(['_trackPageview']);
                 ),
 
                 'wp_sharrre_pinterest'  => array(
+
                     array(
-                        'name'          => 'pinterest_default_url',
-                        'label'         => 'Pinterest Default URL',
-                        'desc'          => '',
-                        'default'       => 'http://monasheemountainmultimedia.com',
-                        'type'          => 'text',
-                        'size'          => 'regular'
+                        'name'          => 'pinterest_defaults',
+                        'label'         => 'Pinterest Defaults',
+                        'desc'          => 'This Pinterest Default image will be used if no image is found on a page.',
+                        'type'          => 'about'
                     ),
 
                     array(
-                        'name'          => 'pinterest_default_logo',
-                        'label'         => 'Pinterest Default Logo',
+                        'name'          => 'pinterest_default_image',
+                        'label'         => 'Pinterest Default Image',
                         'desc'          => '',
-                        'default'       => 'http://mylogo.com',
+                        'default'       => 'http://monasheemountainmultimedia.com/assets/mmm_AE_logo-300x120.png',
                         'type'          => 'media'
                     )
                 )
