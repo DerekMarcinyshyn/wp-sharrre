@@ -139,18 +139,23 @@ if ( ! class_exists( 'Settings_API' ) ):
             );
             wp_enqueue_style( 'farbtastic' );
 
-            // import media uploader javascript
+            // load the media uploader library
+            if( function_exists( 'wp_enqueue_media' ) ) {
+                wp_enqueue_media();
+            } else {
+                wp_enqueue_script( 'thickbox' );
+                wp_enqueue_style( 'thickbox' );
+                wp_enqueue_script( 'media-upload' );
+            }
+
+            // import settings-api-upload javascript
             wp_register_script(
                 'settings-api-upload',
                 WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/settings-api-upload.js',
-                array( 'jquery', 'media-upload', 'thickbox' ),
+                array( 'jquery' ),
                 time(),
                 true
             );
-
-            wp_enqueue_script( 'thickbox' );
-            wp_enqueue_style( 'thickbox' );
-            wp_enqueue_script( 'media-upload' );
             wp_enqueue_script( 'settings-api-upload' );
         }
 

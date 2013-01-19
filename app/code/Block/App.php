@@ -85,6 +85,9 @@ if ( ! class_exists( 'App' ) ) :
             add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
         }
 
+        /**
+         * Register and enqueue the sharrre main javascript library
+         */
         function wp_sharrre_scripts_horizontal() {
             wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
             wp_enqueue_script( 'sharrre-js');

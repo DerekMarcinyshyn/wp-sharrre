@@ -34,7 +34,7 @@ WP Sharrre is a WordPress plugin based on a jQuery plugin that allows you to cre
 
 More information on [Sharrre](http://sharrre.com/).
 
-Must be using PHP 5.3.x + and WordPress 3.5
+Must be using PHP 5.3.x + and WordPress 3.5 as it uses the new Media Uploader functionality.
 
 Usage
 -----
