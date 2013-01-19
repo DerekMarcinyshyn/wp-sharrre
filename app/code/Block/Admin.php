@@ -142,7 +142,7 @@ if ( ! class_exists( 'WP_Sharrre_Admin' ) ) :
             $setup_google_analytics = "
             <h2>Track Tweets, Facebook Likes, Google Plus, etc</h2>
             <strong>Installation</strong>
-            <p>If not already the case, you need to update you Google Analytics code. It should look like this:</p>
+            <p>If not already the case, you need to update your Google Analytics code. It should look like something this:</p>
             <div style=\"padding:0 15px; background: #fefbf3; border:1px solid #ccc; margin-bottom:20px; \">
             <pre>&lt;script type=\"text/javascript\"&gt;
 var _gaq = _gaq || [];
@@ -162,13 +162,9 @@ _gaq.push(['_trackPageview']);
             <p><strong>Enable tracking in Show Buttons tab</strong></p>
 
             <h2>Viewing your Google Analytics social tracking reports</h2>
-            <p>Go in the Google Analytics Interface</p>
-            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track1.png\" /></p>
-            <p>Then in the left menu go to <strong>Vistors > Social > Engagement</strong> (or Pages or Actions).</p>
-            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track2.png\" /></p>
-            <p>Your results, if your tracking is properly set up, will look similar to this:</p>
-            <p><img src=\"" . WP_SHARRRE_URL . "/assets/img/track3.png\" /></p>
-            <p>Further reading: <a href=\"https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial\" target=\"_blank\">Social Interaction Analytics</a>
+            <p>Go into your <a href='https://www.google.com/analytics/' target='_blank'>Google Analytics Interface</a></p>
+            <p>Then in the left menu go to <strong>Traffic Sources > Social > Overview</strong>.</p>
+            <p>Further reading: <a href=\"https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial\" target=\"_blank\">Social Interaction Analytics</a></p>
             ";
 
             $usage = '<div style="padding:0 15px; background: #fefbf3; border:1px solid #ccc; margin-bottom:20px;">
