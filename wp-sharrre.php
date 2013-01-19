@@ -10,7 +10,7 @@ Plugin URI: https://derekmarcinyshyn.github.com/wp-sharrre
 Description: WP Sharrre is a WordPress plugin based on a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus and more.
 Author: Derek Marcinyshyn
 Author URI: http://derek.marcinyshyn.com
-Version: 1.0
+Version: 1.1
 License: GPLv2
 
 This program is free software; you can redistribute it and/or
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 defined( 'ABSPATH' ) or die( "Cannot access pages directly." );
 
 // Plugin version
-define( 'WP_SHARRRE_VERSION', '1.0');
+define( 'WP_SHARRRE_VERSION', '1.1');
 
 // Plugin
 define( 'WP_SHARRRE_PLUGIN', __FILE__ );
@@ -51,7 +51,6 @@ define( 'WP_SHARRRE_LIB_PATH', WP_SHARRRE_PATH . '/lib' );
 
 // URL
 define( 'WP_SHARRRE_URL', WP_PLUGIN_URL . '/' . WP_SHARRRE_DIRECTORY );
-
 
 // Require main class
 require_once WP_SHARRRE_APP_PATH . '/code/Block/App.php';

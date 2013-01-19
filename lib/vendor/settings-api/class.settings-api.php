@@ -8,7 +8,7 @@ namespace WP_Sharrre\Settings;
  * @author Derek Marcinyshyn <derek@marcinyshyn.com>
  * @link http://tareq.weDevs.com Tareq's Planet
  * @example settings-api.php How to use the class
- * @since Jan 10, 2013 added colorpick and media uploader 3.5
+ * @since Jan 10, 2013 added colorpicker and media uploader 3.5
  */
 if ( ! class_exists( 'Settings_API' ) ):
     class Settings_API {
