@@ -5,8 +5,8 @@
 * Derek Marcinyshyn [derek.marcinyshyn.com](http://derek.marcinyshyn.com)
 * Julien Hany [hany.fr](http://hany.fr)
 
-* **Version**: 1.1
-* ~Current Version:1.1~
+* **Version**: 1.2
+* ~Current Version:1.2~
 * **Requires at least**: 3.5
 * **Tested up to**: 3.5
 * **License**: GPLv2
