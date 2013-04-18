@@ -63,19 +63,30 @@ if ( ! class_exists( 'Frontend' ) ) :
          */
         private function __construct() {}
 
+        /**
+         * TODO: displays the sharrre vertically via the_content() -- not enabled yet
+         *
+         * @param $content
+         * @return string
+         */
         function add_sharrre_the_content( $content ) {
 
             $sharrre = '';
             $sharrre .= '<div class="wp-sharrre-container">';
             $sharrre .= '<div class="wp-sharrre-inner">';
             $sharrre .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
-            $sharrre .= ' data-title="share" data-text="Something configurable!!!"></div>';
+            $sharrre .= ' data-title="share" data-text="wp-sharrre"></div>';
             $sharrre .= '</div>';
             $sharrre .= '</div>';
 
             return $sharrre . $content;
         }
 
+        /**
+         * Displays html on the frontend
+         *
+         * @return string
+         */
         public static function display_wp_sharrre() {
             global $post;
 
@@ -155,20 +166,21 @@ if ( ! class_exists( 'Frontend' ) ) :
                                 pinterest:      { media: "' . $post_image_src[0] . '", description: "' . $post->post_title . '", layout: "horizontal" }
                             },
 
+                        buttonClassName:    "'.$wp_sharrre_show_button['button_class_name'].'",
                         enableCounter:      false,
                         enableHover:        false,
                         enableTracking:     ' . $tracking . ',
-                        urlCurl:            "' . WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php"
+                        urlCurl:            "' . WP_SHARRRE_URL . '/sharrre.php"
                     });
                 });
                 </script>
                 <style>
                     #wp-sharrre { float:left; z-index: 999; }
-                    .sharrre .button { float:left; width: 80px; }
+                    .sharrre .' . $wp_sharrre_show_button['button_class_name'] . ' { float:left; width: 80px; }
                     .sharrre .googleplus { width: 70px!important; }
                     .sharrre .delicious { width: 100px!important; }
                     .sharrre .twitter { width: 85px!important; }
-                    .sharrre .linkedin { width: 70px!important; }
+                    .sharrre .linkedin { width: 100px!important; }
                     .sharrre .pinterest { width: 50px!important; }
                     .fb-like span { width: 450px!important; overflow:visible!important; z-index: 999; }
                 </style>

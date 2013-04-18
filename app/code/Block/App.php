@@ -49,7 +49,7 @@ if ( ! class_exists( 'App' ) ) :
         private static $_instance = NULL;
 
         static function get_instance() {
-            if( self::$_instance === NULL ) {
+            if ( self::$_instance === NULL ) {
                 self::$_instance = new self();
             }
 
@@ -68,7 +68,7 @@ if ( ! class_exists( 'App' ) ) :
             if ( !is_admin() ) {
 
                 // TODO: only if want to display vertical
-                //add_action( 'init', array( $this, 'wp_sharrre_scripts' ) );
+                //add_action( 'init', array( $this, 'wp_sharrre_scripts_vertical' ) );
 
                 add_action( 'init', array( $this, 'wp_sharrre_scripts_horizontal' ) );
             }
@@ -89,7 +89,7 @@ if ( ! class_exists( 'App' ) ) :
          * Register and enqueue the sharrre main javascript library
          */
         function wp_sharrre_scripts_horizontal() {
-            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
+            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.4', true );
             wp_enqueue_script( 'sharrre-js');
         }
 
@@ -99,56 +99,9 @@ if ( ! class_exists( 'App' ) ) :
          *
          * Add CSS and JS scripts
          */
-        function wp_sharrre_scripts() {
-            global $first_img;
-
-            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre.min.js', array( 'jquery' ), '1.3.3', true );
+        function wp_sharrre_scripts_vertical() {
+            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.3', true );
             wp_enqueue_script( 'sharrre-js');
-
-            wp_register_script( 'wp-sharrre-js', WP_SHARRRE_URL . '/assets/js/wp-sharrre.js', array( 'jquery' ), WP_SHARRRE_VERSION, true );
-            wp_enqueue_script( 'wp-sharrre-js');
-
-            wp_register_style( 'wp-sharrre-css', WP_SHARRRE_URL . '/assets/css/wp-sharrre.css', true, WP_SHARRRE_VERSION );
-            wp_enqueue_style( 'wp-sharrre-css' );
-
-            // get the settings options
-            $show_buttons = get_option( 'wp_sharrre_show_buttons' );
-
-            // set the variables -- if unchecked they will not appear in the array
-            $gp = false;
-            $fb = false;
-            $tw = false;
-            $de = false;
-            $st = false;
-            $li = false;
-            $pi = false;
-            $tracking = false;
-
-            if ( isset( $show_buttons['google_plus'] ) ) $gp = true;
-            if ( isset( $show_buttons['facebook'] ) ) $fb = true;
-            if ( isset( $show_buttons['twitter'] ) ) $tw = true;
-            if ( isset( $show_buttons['delicious'] ) ) $de = true;
-            if ( isset( $show_buttons['stumbleupon'] ) ) $st = true;
-            if ( isset( $show_buttons['linkedin'] ) ) $li = true;
-            if ( isset( $show_buttons['pinterest'] ) ) $pi = true;
-            if ( isset( $show_buttons['tracking'] ) ) $tracking = true;
-
-            // push the settings to frontend in footer
-            wp_localize_script(
-                'sharrre-js',
-                'WP_Sharrre',
-                array(
-                    'sharrre_php'       => WP_SHARRRE_URL . '/lib/vendor/sharrre/sharrre.php',
-                    'google_plus'       => $gp,
-                    'facebook'          => $fb,
-                    'twitter'           => $tw,
-                    'delicious'         => $de,
-                    'stumbleupon'       => $st,
-                    'linkedin'          => $li,
-                    'pinterest'         => $pi,
-                    'pinimage'          => $first_img,
-                    'tracking'          => $tracking
-                ) );
         }
 
         /**
@@ -189,7 +142,7 @@ if ( ! class_exists( 'App' ) ) :
                     'zip_url'               => 'https://github.com/DerekMarcinyshyn/wp-sharrre/zipball/master',
                     'sslverify'             => false,
                     'requires'              => '3.0',
-                    'tested'                => '3.5',
+                    'tested'                => '3.5.1',
                     'readme'                => 'README.md',
                     'access_token'          => '',
                 );

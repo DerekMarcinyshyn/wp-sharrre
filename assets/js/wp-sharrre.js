@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
             delicious:      { size:     'medium' },
             stumbleupon:    { layout:   '1' },
             linkedin:       { counter:  'right' },
-            pinterest:      { media: 'http://monasheemountainmultimedia.com/img/logo.png', description: 'Hello World', layout: 'horizontal' }
+            pinterest:      { media: 'http://business.pinterest.com/assets/img/brand/pinterest_badge_red.png', description: 'Pinterest', layout: 'horizontal' }
         },
 
         hover: function(api, options) {
@@ -49,5 +49,4 @@ jQuery(document).ready(function() {
         enableTracking: Boolean(WP_Sharrre.tracking),
         urlCurl: WP_Sharrre.sharrre_php
     });
-
 });

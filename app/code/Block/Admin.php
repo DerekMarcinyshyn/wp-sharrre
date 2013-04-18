@@ -246,7 +246,16 @@ _gaq.push(['_trackPageview']);
                         'label'         => 'Enable Google Analytics tracking',
                         'desc'          => '',
                         'type'          => 'checkbox'
-                    )
+                    ),
+
+                    array(
+                        'name'          => 'button_class_name',
+                        'label'         => 'Button Class Name',
+                        'desc'          => '',
+                        'default'       => 'button',
+                        'type'          => 'text',
+                        'size'          => '70'
+                    ),
                 ),
 
                 'wp_sharrre_button'     => array(
@@ -281,7 +290,7 @@ _gaq.push(['_trackPageview']);
                     array(
                         'name'          => 'pinterest_defaults',
                         'label'         => 'Pinterest Defaults',
-                        'desc'          => 'This Pinterest Default image will be used if no image is found on a page.',
+                        'desc'          => 'Upload your Pinterest Default image to be used if no image is found on a page.',
                         'type'          => 'about'
                     ),
 
@@ -289,7 +298,7 @@ _gaq.push(['_trackPageview']);
                         'name'          => 'pinterest_default_image',
                         'label'         => 'Pinterest Default Image',
                         'desc'          => '',
-                        'default'       => 'http://monasheemountainmultimedia.com/assets/mmm_AE_logo-300x120.png',
+                        'default'       => 'http://business.pinterest.com/assets/img/brand/pinterest_badge_red.png',
                         'type'          => 'media'
                     )
                 )
