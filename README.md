@@ -39,4 +39,9 @@ Must be using PHP 5.3.x + and WordPress 3.5 as it uses the new Media Uploader fu
 Usage
 -----
 
-In your theme use ```<?php if ( is_callable( '\WP_Sharrre\View\Frontend::display_wp_sharrre' ) ) { echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); } ?>``` to display the Share buttons.
+In your theme use
+
+```<?php if ( is_callable( '\WP_Sharrre\View\Frontend::display_wp_sharrre' ) ) {
+    echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); } ?>```
+
+to display the Share buttons.
