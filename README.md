@@ -48,3 +48,14 @@ In your theme use
 ```
 
 to display the Share buttons.
+
+If downloading the zip file, be sure to unzip and rename the folder to ``` wp-sharrre ``` and remove the ``` -master ``` to make sure the plugin updater works.
+
+Changelog
+---------
+
+1.2
+
+* Added button class name to settings page to allow custom individual buttons
+* Updated updater to version 1.6
+* Updated sharrre.js to 1.3.4
