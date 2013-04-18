@@ -41,7 +41,10 @@ Usage
 
 In your theme use
 
-```<?php if ( is_callable( '\WP_Sharrre\View\Frontend::display_wp_sharrre' ) ) {
-    echo \WP_Sharrre\View\Frontend::display_wp_sharrre(); } ?>```
+```php
+<?php if ( is_callable( '\WP_Sharrre\View\Frontend::display_wp_sharrre' ) ) {
+    echo \WP_Sharrre\View\Frontend::display_wp_sharrre();
+} ?>
+```
 
 to display the Share buttons.
