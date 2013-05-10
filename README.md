@@ -5,10 +5,10 @@
 * Derek Marcinyshyn [derek.marcinyshyn.com](http://derek.marcinyshyn.com)
 * Julien Hany [hany.fr](http://hany.fr)
 
-* **Version**: 1.2
-* ~Current Version:1.2~
-* **Requires at least**: 3.5
-* **Tested up to**: 3.5
+* **Version**: 1.3
+* ~Current Version:1.3~
+* **Requires at least**: 3.3
+* **Tested up to**: 3.6
 * **License**: GPLv2
 
 Features
@@ -53,6 +53,10 @@ If downloading the zip file, be sure to unzip and rename the folder to ``` wp-sh
 
 Change log
 ----------
+
+1.3
+
+* Change order of Google Plus to be on the far right
 
 1.2
 
