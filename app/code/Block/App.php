@@ -37,119 +37,120 @@ namespace WP_Sharrre;
 
 if ( ! class_exists( 'App' ) ) :
 
-    class App {
+	class App {
 
-        /**
-         * _instance class variable
-         *
-         * Class instance
-         *
-         * @var null | object
-         */
-        private static $_instance = NULL;
+		/**
+		 * _instance class variable
+		 *
+		 * Class instance
+		 *
+		 * @var null | object
+		 */
+		private static $_instance = NULL;
 
-        static function get_instance() {
-            if ( self::$_instance === NULL ) {
-                self::$_instance = new self();
-            }
+		static function get_instance() {
+			if ( self::$_instance === NULL ) {
+				self::$_instance = new self();
+			}
 
-            return self::$_instance;
-        }
+			return self::$_instance;
+		}
 
-        /**
-         * Constructor
-         *
-         * Default constructor -- application initialization
-         */
-        private function __construct() {
-            global $wp_sharrre_admin;
+		/**
+		 * Constructor
+		 *
+		 * Default constructor -- application initialization
+		 */
+		private function __construct() {
+			global $wp_sharrre_admin;
 
-            // add scripts only on frontend
-            if ( !is_admin() ) {
+			// add scripts only on frontend
+			if ( ! is_admin() ) {
 
-                // TODO: only if want to display vertical
-                //add_action( 'init', array( $this, 'wp_sharrre_scripts_vertical' ) );
+				// TODO: only if want to display vertical
+				//add_action( 'init', array( $this, 'wp_sharrre_scripts_vertical' ) );
 
-                add_action( 'init', array( $this, 'wp_sharrre_scripts_horizontal' ) );
-            }
+				add_action( 'init', array( $this, 'wp_sharrre_scripts_horizontal' ) );
+			}
 
-            // TODO: if display vertical use this
-            // add div via filter hook
-            //add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
+			// TODO: if display vertical use this
+			// add div via filter hook
+			//add_filter( 'the_content', array( $wp_sharrre_frontend, 'add_sharrre_the_content' ) );
 
-            // add settings page
-            add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
-            add_action( 'admin_init', array( $wp_sharrre_admin, 'wp_sharrre_admin_init' ) );
+			// add settings page
+			add_action( 'admin_menu', array( $wp_sharrre_admin, 'add_settings_page' ) );
+			add_action( 'admin_init', array( $wp_sharrre_admin, 'wp_sharrre_admin_init' ) );
 
-            // check for update
-            add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
-        }
+			// check for update
+			add_action( 'admin_init', array( $this, 'wp_sharrre_updater' ) );
+		}
 
-        /**
-         * Register and enqueue the sharrre main javascript library
-         */
-        function wp_sharrre_scripts_horizontal() {
-            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.4', true );
-            wp_enqueue_script( 'sharrre-js');
-        }
+		/**
+		 * Register and enqueue the sharrre main javascript library
+		 */
+		function wp_sharrre_scripts_horizontal() {
+			wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.4', true );
+			wp_enqueue_script( 'sharrre-js' );
+		}
 
-        /**
-         * wp_sharrre_scripts function
-         * for displaying in a vertical format
-         *
-         * Add CSS and JS scripts
-         */
-        function wp_sharrre_scripts_vertical() {
-            wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.3', true );
-            wp_enqueue_script( 'sharrre-js');
-        }
+		/**
+		 * wp_sharrre_scripts function
+		 * for displaying in a vertical format
+		 *
+		 * Add CSS and JS scripts
+		 */
+		function wp_sharrre_scripts_vertical() {
+			wp_register_script( 'sharrre-js', WP_SHARRRE_URL . '/assets/js/jquery.sharrre-1.3.4.min.js', array( 'jquery' ), '1.3.3', true );
+			wp_enqueue_script( 'sharrre-js' );
+		}
 
-        /**
-         * get the WP Sharrre Options
-         *
-         * @param $option
-         * @param $section
-         * @param string $default
-         * @return string
-         */
-        function wp_sharrre_get_option( $option, $section, $default = '' ) {
+		/**
+		 * get the WP Sharrre Options
+		 *
+		 * @param        $option
+		 * @param        $section
+		 * @param string $default
+		 *
+		 * @return string
+		 */
+		function wp_sharrre_get_option( $option, $section, $default = '' ) {
 
-            $options = get_option( $section );
+			$options = get_option( $section );
 
-            if ( isset( $options[$option] ) ) {
-                return $options[$option];
-            }
+			if ( isset( $options[$option] ) ) {
+				return $options[$option];
+			}
 
-            return $default;
-        }
+			return $default;
+		}
 
-        /**
-         * wp_sharrre_updater class
-         *
-         * Check GitHub to see if there is an update available
-         */
-        function wp_sharrre_updater() {
+		/**
+		 * wp_sharrre_updater class
+		 *
+		 * Check GitHub to see if there is an update available
+		 */
+		function wp_sharrre_updater() {
 
-            define( 'WP_SHARRRE_FORCE_UPDATE', true );
+			define( 'WP_SHARRRE_FORCE_UPDATE', true );
 
-            if ( is_admin() ) {
-                $config = array(
-                    'slug'                  => WP_SHARRRE_DIRECTORY . '/wp-sharrre.php',
-                    'proper_folder_name'    => 'wp-sharrre',
-                    'api_url'               => 'https://api.github.com/repos/DerekMarcinyshyn/wp-sharrre',
-                    'raw_url'               => 'https://raw.github.com/DerekMarcinyshyn/wp-sharrre/master',
-                    'github_url'            => 'https://github.com/DerekMarcinyshyn/wp-sharrre',
-                    'zip_url'               => 'https://github.com/DerekMarcinyshyn/wp-sharrre/zipball/master',
-                    'sslverify'             => false,
-                    'requires'              => '3.0',
-                    'tested'                => '3.5.1',
-                    'readme'                => 'README.md',
-                    'access_token'          => '',
-                );
+			if ( is_admin() ) {
+				$config = array(
+					'slug'               => WP_SHARRRE_DIRECTORY . '/wp-sharrre.php',
+					'proper_folder_name' => 'wp-sharrre',
+					'api_url'            => 'https://api.github.com/repos/DerekMarcinyshyn/wp-sharrre',
+					'raw_url'            => 'https://raw.github.com/DerekMarcinyshyn/wp-sharrre/master',
+					'github_url'         => 'https://github.com/DerekMarcinyshyn/wp-sharrre',
+					'zip_url'            => 'https://github.com/DerekMarcinyshyn/wp-sharrre/zipball/master',
+					'sslverify'          => false,
+					'requires'           => '3.0',
+					'tested'             => '3.5.1',
+					'readme'             => 'README.md',
+					'access_token'       => '',
+				);
 
-                new \WP_SHARRRE_Updater( $config );
-            }
-        }
-    }
+				new \WP_SHARRRE_Updater( $config );
+			}
+		}
+	}
 
 endif; // end if class_exists

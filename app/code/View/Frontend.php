@@ -37,123 +37,125 @@ namespace WP_Sharrre\View;
 
 if ( ! class_exists( 'Frontend' ) ) :
 
-    class Frontend {
+	class Frontend {
 
-        /**
-         * _instance class variable
-         *
-         * Class instance
-         *
-         * @var null | object
-         */
-        private static $_instance = NULL;
+		/**
+		 * _instance class variable
+		 *
+		 * Class instance
+		 *
+		 * @var null | object
+		 */
+		private static $_instance = NULL;
 
-        static function get_instance() {
-            if( self::$_instance === NULL ) {
-                self::$_instance = new self();
-            }
+		static function get_instance() {
+			if ( self::$_instance === NULL ) {
+				self::$_instance = new self();
+			}
 
-            return self::$_instance;
-        }
+			return self::$_instance;
+		}
 
-        /**
-         * Constructor
-         *
-         * Default constructor
-         */
-        private function __construct() {}
+		/**
+		 * Constructor
+		 *
+		 * Default constructor
+		 */
+		private function __construct() {
+		}
 
-        /**
-         * TODO: displays the sharrre vertically via the_content() -- not enabled yet
-         *
-         * @param $content
-         * @return string
-         */
-        function add_sharrre_the_content( $content ) {
+		/**
+		 * TODO: displays the sharrre vertically via the_content() -- not enabled yet
+		 *
+		 * @param $content
+		 *
+		 * @return string
+		 */
+		function add_sharrre_the_content( $content ) {
 
-            $sharrre = '';
-            $sharrre .= '<div class="wp-sharrre-container">';
-            $sharrre .= '<div class="wp-sharrre-inner">';
-            $sharrre .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
-            $sharrre .= ' data-title="share" data-text="wp-sharrre"></div>';
-            $sharrre .= '</div>';
-            $sharrre .= '</div>';
+			$sharrre = '';
+			$sharrre .= '<div class="wp-sharrre-container">';
+			$sharrre .= '<div class="wp-sharrre-inner">';
+			$sharrre .= '<div id="wp-sharrre" data-url="' . get_bloginfo( 'wpurl' ) . '"';
+			$sharrre .= ' data-title="share" data-text="wp-sharrre"></div>';
+			$sharrre .= '</div>';
+			$sharrre .= '</div>';
 
-            return $sharrre . $content;
-        }
+			return $sharrre . $content;
+		}
 
-        /**
-         * Displays html on the frontend
-         *
-         * @return string
-         */
-        public static function display_wp_sharrre() {
-            global $post;
+		/**
+		 * Displays html on the frontend
+		 *
+		 * @return string
+		 */
+		public static function display_wp_sharrre() {
+			global $post;
 
-            // initialize variables
-            $wp_sharrre_button_options = get_option( 'wp_sharrre_button' );
-            $wp_sharrre_show_button = get_option( 'wp_sharrre_show_buttons' );
-            $wp_sharrre_pinterest = get_option( 'wp_sharrre_pinterest' );
+			// initialize variables
+			$wp_sharrre_button_options = get_option( 'wp_sharrre_button' );
+			$wp_sharrre_show_button    = get_option( 'wp_sharrre_show_buttons' );
+			$wp_sharrre_pinterest      = get_option( 'wp_sharrre_pinterest' );
 
-            $gp = 0;
-            $fb = 0;
-            $tw = 0;
-            $de = 0;
-            $st = 0;
-            $li = 0;
-            $pi = 0;
-            $tracking = 0;
+			$gp       = 0;
+			$fb       = 0;
+			$tw       = 0;
+			$de       = 0;
+			$st       = 0;
+			$li       = 0;
+			$pi       = 0;
+			$tracking = 0;
 
-            if ( isset( $wp_sharrre_show_button['google_plus'] ) ) $gp = true;
-            if ( isset( $wp_sharrre_show_button['facebook'] ) ) $fb = true;
-            if ( isset( $wp_sharrre_show_button['twitter'] ) ) $tw = true;
-            if ( isset( $wp_sharrre_show_button['delicious'] ) ) $de = true;
-            if ( isset( $wp_sharrre_show_button['stumbleupon'] ) ) $st = true;
-            if ( isset( $wp_sharrre_show_button['linkedin'] ) ) $li = true;
-            if ( isset( $wp_sharrre_show_button['pinterest'] ) ) $pi = true;
-            if ( isset( $wp_sharrre_show_button['tracking'] ) ) $tracking = true;
+			if ( isset( $wp_sharrre_show_button['google_plus'] ) ) $gp = true;
+			if ( isset( $wp_sharrre_show_button['facebook'] ) ) $fb = true;
+			if ( isset( $wp_sharrre_show_button['twitter'] ) ) $tw = true;
+			if ( isset( $wp_sharrre_show_button['delicious'] ) ) $de = true;
+			if ( isset( $wp_sharrre_show_button['stumbleupon'] ) ) $st = true;
+			if ( isset( $wp_sharrre_show_button['linkedin'] ) ) $li = true;
+			if ( isset( $wp_sharrre_show_button['pinterest'] ) ) $pi = true;
+			if ( isset( $wp_sharrre_show_button['tracking'] ) ) $tracking = true;
 
-            // find the first image associated with the post
-            $args = array(
-                'numberposts'       => 1,
-                'order'             => 'ASC',
-                'post_mime_type'    => 'image',
-                'post_parent'       => $post->ID,
-                'post_status'       => null,
-                'post_type'         => 'attachment'
-            );
+			// find the first image associated with the post
+			$args = array(
+				'numberposts'    => 1,
+				'order'          => 'ASC',
+				'post_mime_type' => 'image',
+				'post_parent'    => $post->ID,
+				'post_status'    => null,
+				'post_type'      => 'attachment'
+			);
 
-            $post_images_data = get_children( $args );
+			$post_images_data = get_children( $args );
 
-            // setting for default image?
-            $post_image_src[0] = '';
-            $post_image_src[0] = $wp_sharrre_pinterest['pinterest_default_image'];
+			// setting for default image?
+			$post_image_src[0] = '';
+			$post_image_src[0] = $wp_sharrre_pinterest['pinterest_default_image'];
 
-            if ( $post_images_data ) {
-                foreach ( $post_images_data as $post_image_data) {
-                    $post_image_src = wp_get_attachment_image_src( $post_image_data->ID, 'full' );
-                }
-            }
+			if ( $post_images_data ) {
+				foreach ( $post_images_data as $post_image_data ) {
+					$post_image_src = wp_get_attachment_image_src( $post_image_data->ID, 'full' );
+				}
+			}
 
-            // the html div holder
-            $html = '';
-            $html .= '<div id="wp-sharrre" data-url="' . get_bloginfo('wpurl') . '"';
-            $html .= ' data-text="' . $post->post_title . '"';
-            $html .= ' data-title="' . $wp_sharrre_button_options['share_button_text']  . '"></div>';
+			// the html div holder
+			$html = '';
+			$html .= '<div id="wp-sharrre" data-url="' . get_bloginfo( 'wpurl' ) . '"';
+			$html .= ' data-text="' . $post->post_title . '"';
+			$html .= ' data-title="' . $wp_sharrre_button_options['share_button_text'] . '"></div>';
 
-            // sharrre javascript
-            $html .= '
+			// sharrre javascript
+			$html .= '
                 <script type="text/javascript">
                 jQuery(document).ready(function() {
                     jQuery("#wp-sharrre").sharrre({
                         share: {
-                            googlePlus:     ' . $gp . ',
                             twitter:        ' . $tw . ',
                             delicious:      ' . $de . ',
                             stumbleupon:    ' . $st . ',
                             linkedin:       ' . $li . ',
                             pinterest:      ' . $pi . ',
                             facebook:       ' . $fb . ',
+                            googlePlus:     ' . $gp . '
                         },
 
                         buttons: {
@@ -166,7 +168,7 @@ if ( ! class_exists( 'Frontend' ) ) :
                                 pinterest:      { media: "' . $post_image_src[0] . '", description: "' . $post->post_title . '", layout: "horizontal" }
                             },
 
-                        buttonClassName:    "'.$wp_sharrre_show_button['button_class_name'].'",
+                        buttonClassName:    "' . $wp_sharrre_show_button['button_class_name'] . '",
                         enableCounter:      false,
                         enableHover:        false,
                         enableTracking:     ' . $tracking . ',
@@ -187,8 +189,8 @@ if ( ! class_exists( 'Frontend' ) ) :
                 <div style="clear:both"></div>
             ';
 
-            return $html;
-        }
+			return $html;
+		}
 
-    }
+	}
 endif; // if class_exists
