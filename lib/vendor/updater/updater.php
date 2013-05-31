@@ -223,7 +223,7 @@ class WP_SHARRRE_Updater {
 			$raw_response = wp_remote_get( $query, array( 'sslverify' => $this->config['sslverify'] ) );
 
 			if ( is_wp_error( $raw_response ) )
-				$version = false;
+				return false;
 
 			preg_match( '#^\s*Version\:\s*(.*)$#im', $raw_response['body'], $matches );
 
